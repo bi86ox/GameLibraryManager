@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\susha\\OneDrive\\Desktop\\raghav\\GameLibraryManager\\GameLibraryManager.csproj",
+      "projectUniqueName": "D:\\raghav\\GameLibraryManager\\GameLibraryManager.csproj",
       "projectName": "GameLibraryManager",
-      "projectPath": "C:\\Users\\susha\\OneDrive\\Desktop\\raghav\\GameLibraryManager\\GameLibraryManager.csproj",
+      "projectPath": "D:\\raghav\\GameLibraryManager\\GameLibraryManager.csproj",
       "packagesPath": "C:\\Users\\susha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\susha\\OneDrive\\Desktop\\raghav\\GameLibraryManager\\obj\\",
+      "outputPath": "D:\\raghav\\GameLibraryManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\susha\\AppData\\Roaming\\NuGet\\NuGet.Config"

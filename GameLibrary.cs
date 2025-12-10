@@ -4,7 +4,7 @@ namespace GameLibraryManager
 {
     public class GameLibrary
     {
-        private static GameLibrary _instance;
+        private static GameLibrary? _instance;
         private static readonly object _lock = new object();
 
         public List<Player> Players { get; private set; }
@@ -54,7 +54,7 @@ namespace GameLibraryManager
             }
         }
 
-        public Player SearchPlayerById(int id)
+        public Player? SearchPlayerById(int id)
         {
             return Players.Find(p => p.Id == id);
         }

@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "Username": "00001",
+    "Email": "hhhh",
+    "Stats": {
+      "TotalHoursPlayed": 0,
+      "HighScore": 0,
+      "FavoriteGames": []
+    }
+  }
+]

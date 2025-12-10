@@ -1,6 +1,4 @@
-﻿Console.WriteLine("Hello, World!");
-=======
-using System;
+﻿using System;
 
 namespace GameLibraryManager
 {
@@ -21,7 +19,13 @@ namespace GameLibraryManager
                 Console.WriteLine("6. Exit");
                 Console.Write("Choose an option: ");
 
-                string choice = Console.ReadLine();
+                string? input = Console.ReadLine();
+                if (input == null) 
+                {
+                    Console.WriteLine("Invalid input. Try again.");
+                    continue;
+                }
+                string choice = input;
 
                 switch (choice)
                 {
@@ -52,9 +56,9 @@ namespace GameLibraryManager
         static void AddPlayer(GameLibrary library)
         {
             Console.Write("Enter username: ");
-            string username = Console.ReadLine();
+            string? username = Console.ReadLine();
             Console.Write("Enter email: ");
-            string email = Console.ReadLine();
+            string? email = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(email))
             {
