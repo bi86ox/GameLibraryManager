@@ -1,67 +1,68 @@
 # Game Library & Player Stats Manager
 
-This is a C# console application that allows users to manage a collection of games and track player statistics. The application provides functionality to add, update, search, and sort players, as well as manage game data.
+Hey there! This is my C# console app for keeping track of games and player stats. It's a simple way to add players, update their progress, search for them, and sort by different stats. I built it as a fun project to practice some design patterns and .NET basics.
 
-## Features
+## What It Does
 
-- Add, update, and remove players
-- Search players by name or stats
-- Sort players by various criteria
-- Persistent data storage using JSON
-- Logging of operations
+- Add new players, tweak their info, or remove them if needed
+- Search for players by name or dive into their stats
+- Sort the list however you like – by wins, playtime, whatever
+- Saves everything to JSON files so your data sticks around
+- Logs what you're doing, just in case you want to review
 
-## Setup Instructions
+## How to Get It Running
 
-1. **Prerequisites**:
-   - .NET 8.0 or later
-   - Visual Studio 2022 or .NET CLI
+You'll need .NET 8 or newer – grab it from the official site if you don't have it. Visual Studio works great, but the CLI is fine too.
 
-2. **Clone the Repository**:
+1. Clone this repo:
    ```
    git clone https://github.com/bi86ox/GameLibraryManager.git
    cd GameLibraryManager
    ```
 
-3. **Build the Project**:
+2. Build it:
    ```
    dotnet build
    ```
 
-4. **Run the Application**:
+3. Fire it up:
    ```
    dotnet run
    ```
 
-5. **Run Tests**:
+4. To run the tests (there are a few unit tests to check things like adding players and sorting):
    ```
-   cd ../GameLibraryManagerTests
    dotnet test
    ```
 
-## Design Choices
+That's it! The menu in the console will guide you from there.
 
-- **Singleton Pattern**: Used for the GameLibrary class to ensure a single instance manages the game data.
-- **Factory Pattern**: PlayerFactory creates Player objects based on input.
-- **Data Persistence**: JSON files for storing games and players data.
-- **Logging**: Custom Logger class for recording operations.
-- **Search and Sort Algorithms**: Linear search for players, custom sort for stats.
+## Why I Did It This Way
 
-## Project Structure
+I wanted to experiment with some patterns:
+- **Singleton for GameLibrary**: Keeps one central spot for all the game and player data – no duplicates messing things up.
+- **Factory for Players**: PlayerFactory handles creating players based on what you input, makes it flexible.
+- **JSON for Storage**: Easy to read/write, and no fancy database needed for a console app.
+- **Custom Logger**: Just a simple class to jot down actions – helpful for debugging.
+- **Searches and Sorts**: Stuck with linear search for simplicity (it's small-scale), and a custom sort for stats to keep it efficient.
 
-- `Game.cs`: Represents a game entity.
-- `Player.cs`: Represents a player entity.
-- `PlayerStats.cs`: Handles player statistics.
-- `GameLibrary.cs`: Manages the collection of games and players.
-- `PlayerFactory.cs`: Creates player instances.
-- `IDataPersistence.cs`: Interface for data persistence.
-- `JsonDataPersistence.cs`: JSON implementation of data persistence.
-- `Logger.cs`: Logging utility.
-- `Program.cs`: Main entry point with menu-driven interface.
+## What's Inside
 
-## Contributing
+- `Game.cs`: Basic game info.
+- `Player.cs`: The player model.
+- `PlayerStats.cs`: Tracks wins, losses, etc.
+- `GameLibrary.cs`: The boss – manages everything.
+- `PlayerFactory.cs`: Builds players on the fly.
+- `IDataPersistence.cs` & `JsonDataPersistence.cs`: For saving/loading data.
+- `Logger.cs`: Logs your moves.
+- `Program.cs`: The main loop with the menu.
 
-Feel free to fork the repository and submit pull requests for improvements.
+There's also a test project with some basics covered, like testing adds, updates, and file I/O.
+
+## Contributing or Ideas?
+
+If you spot something cool or want to add features (maybe a GUI?), fork it and send a PR. I'd love to see what you come up with!
 
 ## License
 
-This project is for educational purposes.
+Just for learning – no restrictions, use it however for your own projects.
