@@ -1,68 +1,64 @@
 # Game Library & Player Stats Manager
 
-Hey there! This is my C# console app for keeping track of games and player stats. It's a simple way to add players, update their progress, search for them, and sort by different stats. I built it as a fun project to practice some design patterns and .NET basics.
+This is a small C# console application for managing a collection of games and player statistics. It supports adding/removing players, updating player stats, basic game management, and persisting data to JSON files.
 
-## What It Does
+## Features
 
-- Add new players, tweak their info, or remove them if needed
-- Search for players by name or dive into their stats
-- Sort the list however you like – by wins, playtime, whatever
-- Saves everything to JSON files so your data sticks around
-- Logs what you're doing, just in case you want to review
+- Add players and games
+- Update player stats (hours played, high score)
+- Search players and games by ID
+- Sort players by high score
+- Remove players by ID
+- JSON persistence via `JsonDataPersistence`
+- Simple logging to `application.log`
 
-## How to Get It Running
+## Quickstart
 
-You'll need .NET 8 or newer – grab it from the official site if you don't have it. Visual Studio works great, but the CLI is fine too.
+Requirements: .NET 8 SDK or newer.
 
-1. Clone this repo:
-   ```
-   git clone https://github.com/bi86ox/GameLibraryManager.git
-   cd GameLibraryManager
-   ```
+Clone, build, run:
 
-2. Build it:
-   ```
-   dotnet build
-   ```
+```bash
+git clone https://github.com/bi86ox/GameLibraryManager.git
+cd GameLibraryManager
+dotnet build
+dotnet run
+```
 
-3. Fire it up:
-   ```
-   dotnet run
-   ```
+Run tests:
 
-4. To run the tests (there are a few unit tests to check things like adding players and sorting):
-   ```
-   dotnet test
-   ```
+```bash
+dotnet test
+```
 
-That's it! The menu in the console will guide you from there.
+The console app shows a menu with options for players and games.
 
-## Why I Did It This Way
+## Project Layout
 
-I wanted to experiment with some patterns:
-- **Singleton for GameLibrary**: Keeps one central spot for all the game and player data – no duplicates messing things up.
-- **Factory for Players**: PlayerFactory handles creating players based on what you input, makes it flexible.
-- **JSON for Storage**: Easy to read/write, and no fancy database needed for a console app.
-- **Custom Logger**: Just a simple class to jot down actions – helpful for debugging.
-- **Searches and Sorts**: Stuck with linear search for simplicity (it's small-scale), and a custom sort for stats to keep it efficient.
+- `Game.cs` — game model
+- `Player.cs` — player model
+- `PlayerStats.cs` — player statistics
+- `GameLibrary.cs` — core manager (singleton)
+- `PlayerFactory.cs` — creates players and manages IDs
+- `IDataPersistence.cs`, `JsonDataPersistence.cs` — persistence layer (JSON)
+- `Logger.cs` — simple logger
+- `Program.cs` — CLI/menu
+- `GameLibraryManagerTests/` — unit tests
 
-## What's Inside
+## Recent Changes
 
-- `Game.cs`: Basic game info.
-- `Player.cs`: The player model.
-- `PlayerStats.cs`: Tracks wins, losses, etc.
-- `GameLibrary.cs`: The boss – manages everything.
-- `PlayerFactory.cs`: Builds players on the fly.
-- `IDataPersistence.cs` & `JsonDataPersistence.cs`: For saving/loading data.
-- `Logger.cs`: Logs your moves.
-- `Program.cs`: The main loop with the menu.
+- Added game-management features (`AddGame`, `SearchGameById`) and player removal (`RemovePlayerById`).
+- Initialized `PlayerFactory` next ID from persisted data to avoid ID collisions.
+- Added unit tests for `GameLibrary` (add/search/remove) and updated `.gitignore` to ignore `players.json`, `games.json`, and `application.log`.
 
-There's also a test project with some basics covered, like testing adds, updates, and file I/O.
+## Notes & Recommendations
 
-## Contributing or Ideas?
+- Data files (`players.json`, `games.json`) and `application.log` are ignored by `.gitignore` by default.
+- Consider adding more unit tests (edge cases, persistence failures) and input validation for the CLI.
 
-If you spot something cool or want to add features (maybe a GUI?), fork it and send a PR. I'd love to see what you come up with!
+## Contributing
 
-## License
+Feel free to open a PR — I created `feature/tests-and-gitignore` with tests and `.gitignore` updates. You can also create issues for feature requests or bugs.
 
-Just for learning – no restrictions, use it however for your own projects.
+---
+Thanks for checking this out — let me know if you want a GUI, API, or persistence to a database.

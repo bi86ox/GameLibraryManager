@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameLibraryManager
 {
@@ -19,6 +20,17 @@ namespace GameLibraryManager
             _dataPersistence = new JsonDataPersistence();
             _logger = new Logger();
             LoadData();
+        }
+
+        // Initialize factories / ids after loading persisted data
+        private void InitializeAfterLoad()
+        {
+            int nextPlayerId = 1;
+            if (Players != null && Players.Any())
+            {
+                nextPlayerId = Players.Max(p => p.Id) + 1;
+            }
+            PlayerFactory.Initialize(nextPlayerId);
         }
 
         public static GameLibrary Instance
@@ -72,11 +84,37 @@ namespace GameLibraryManager
             {
                 Players = _dataPersistence.LoadPlayers();
                 Games = _dataPersistence.LoadGames();
+                InitializeAfterLoad();
             }
             catch
             {
                 // Handle errors, perhaps log
             }
+        }
+
+        public void AddGame(Game game)
+        {
+            Games.Add(game);
+            _logger.Log($"Game added: {game.Title}");
+            SaveData();
+        }
+
+        public Game? SearchGameById(int id)
+        {
+            return Games.Find(g => g.Id == id);
+        }
+
+        public bool RemovePlayerById(int id)
+        {
+            var player = Players.Find(p => p.Id == id);
+            if (player != null)
+            {
+                Players.Remove(player);
+                _logger.Log($"Player removed: {player.Username}");
+                SaveData();
+                return true;
+            }
+            return false;
         }
 
         private void SaveData()

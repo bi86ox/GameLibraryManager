@@ -34,6 +34,8 @@ Thumbs.db
 # Logs
 *.log
 application.log
+players.json
+games.json
 
 # NuGet packages
 *.nupkg
