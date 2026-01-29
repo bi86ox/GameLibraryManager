@@ -8,5 +8,15 @@
       "HighScore": 0,
       "FavoriteGames": []
     }
+  },
+  {
+    "Id": 1,
+    "Username": "12345",
+    "Email": "sssssss",
+    "Stats": {
+      "TotalHoursPlayed": 0,
+      "HighScore": 0,
+      "FavoriteGames": []
+    }
   }
 ]

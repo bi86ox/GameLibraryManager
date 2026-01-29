@@ -11,5 +11,13 @@ namespace GameLibraryManager
             var player = new Player(_nextId++, username, email);
             return player;
         }
+
+        public static void Initialize(int startId)
+        {
+            if (startId > 0)
+            {
+                _nextId = startId;
+            }
+        }
     }
 }
